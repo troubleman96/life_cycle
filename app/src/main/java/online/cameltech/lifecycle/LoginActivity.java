@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +19,21 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: Login Activity Birth!");
 
+        // 1. Find the Login Button and the Create Account text
+        Button btnLogin = findViewById(R.id.button);
         TextView tvCreateAccount = findViewById(R.id.tvCreateAccount);
+
+        // 2. Click listener for the Login Button
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go to Dashboard
+                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 3. Click listener for Create Account text
         tvCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
