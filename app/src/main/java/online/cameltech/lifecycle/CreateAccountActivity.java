@@ -3,6 +3,7 @@ package online.cameltech.lifecycle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateAccountActivity extends AppCompatActivity {
+
+    private static final String TAG = "LifecycleCreateAccount";
 
     // Declare your UI elements here
     private EditText etName, etPhone, etPassword, etConfirmPassword;
@@ -23,6 +26,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         // This line connects this Java file to your XML layout!
         setContentView(R.layout.activity_create_account);
+
+        Log.d(TAG, "onCreate: Create Account Activity Birth!");
 
         // 1. Find the views by the IDs we gave them in the XML
         etName = findViewById(R.id.etName);
@@ -50,5 +55,35 @@ public class CreateAccountActivity extends AppCompatActivity {
                 finish(); // Optional: close this activity
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: Create Account visible");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: Create Account active");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: Create Account losing focus");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: Create Account hidden");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: Create Account destroyed");
     }
 }
